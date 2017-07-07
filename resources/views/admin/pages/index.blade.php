@@ -12,12 +12,12 @@
                     <div class="panel-heading">Dashboard</div>
 
                     <div class="panel-body">
-                        <a href="{{route('question.create')}}" class="btn btn-primary">Add</a>
+                        <a href="{{route('page.create')}}" class="btn btn-primary">Add</a>
                         <table class="table table-bordered" id="users-table">
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Pertanyaan</th>
+                                <th>title</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -37,10 +37,10 @@
             var dt = $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{route('question.data')}}',
+                ajax: '{{route('page.data')}}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'question', name: 'question' },
+                    { data: 'title', name: 'title' },
                     { data: 'action', name: 'action' ,orderable: false, searchable: false, align: 'center'},
                 ]
             });
@@ -59,7 +59,7 @@
                     function(isConfirm){
                         if (isConfirm) {
                             $.ajax({
-                                url: "/admin/question/"+id,
+                                url: "/admin/page/"+id,
                                 method: "DELETE",
                             }).done(function( msg ) {
                                 dt.ajax.reload();
