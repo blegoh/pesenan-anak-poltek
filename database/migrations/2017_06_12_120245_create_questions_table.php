@@ -18,7 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->string('question');
             $table->unsignedInteger('if_yes')->nullable();
             $table->unsignedInteger('if_no')->nullable();
-            $table->boolean('conclution')->nullable();
+            $table->boolean('conclusion_yes')->nullable();
+            $table->boolean('conclusion_no')->nullable();
             $table->timestamps();
         });
     }
