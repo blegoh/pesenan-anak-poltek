@@ -39,28 +39,33 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false">Jember</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="">Sejarah</a></li>
-                            <li><a href="">Geografi</a></li>
-                            <li><a href="">Penduduk</a></li>
-                            <li><a href="">Pendidikan</a></li>
-                        </ul>
-                    </li>&nbsp;
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false">Kanker Servik</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="">Etiologi</a></li>
-                            <li><a href="">Epidemiologi</a></li>
-                            <li><a href="">Patofisiologi</a></li>
-                            <li><a href="">Pencegahan dan Pemeriksaan</a></li>
-                        </ul>
-                    </li>
-                    @if(Auth::check())
-                        <li><a href="/app">Deteksi Dini</a></li>
+                    @if(Auth::check() && Auth::user()->is_admin == 1)
+                        <li><a href="/admin/question">Pertanyaan</a></li>
+                        <li><a href="/admin/page">Halaman</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">Jember</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/page/sejarah">Sejarah</a></li>
+                                <li><a href="/page/geografi">Geografi</a></li>
+                                <li><a href="/page/penduduk">Penduduk</a></li>
+                                <li><a href="/page/pendidikan">Pendidikan</a></li>
+                            </ul>
+                        </li>&nbsp;
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">Kanker Servik</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/page/etiologi">Etiologi</a></li>
+                                <li><a href="/page/epidemiologi">Epidemiologi</a></li>
+                                <li><a href="/page/patofisiologi">Patofisiologi</a></li>
+                                <li><a href="/page/pencegahan-dan-pemeriksaan">Pencegahan dan Pemeriksaan</a></li>
+                            </ul>
+                        </li>
+                        @if(Auth::check() && Auth::user()->is_admin == 0)
+                            <li><a href="/app">Deteksi Dini</a></li>
+                        @endif
                     @endif
                 </ul>
 
