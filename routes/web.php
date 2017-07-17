@@ -19,13 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/question/data','Admin\QuestionController@anyData')
-    ->name('question.data');
-Route::resource('/admin/question','Admin\QuestionController');
+Route::prefix('admin')->group(function () {
+    Route::get('/question/data','Admin\QuestionController@anyData')
+        ->name('question.data');
+    Route::resource('/question','Admin\QuestionController');
 
-Route::get('/admin/page/data','Admin\PageController@anyData')
-    ->name('page.data');
-Route::resource('/admin/page','Admin\PageController');
+    Route::get('/page/data','Admin\PageController@anyData')
+        ->name('page.data');
+    Route::resource('/page','Admin\PageController');
+
+});
 
 
 Route::get('app','AppController@index');
