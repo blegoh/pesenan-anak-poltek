@@ -17,7 +17,7 @@ class PageSeeder extends Seeder
         ];
 
         foreach ($titles as $title) {
-            \App\Page::create([
+            \App\Models\Page::create([
                 'slug' => str_slug($title),
                 'title' => $title,
                 'image' => '',
