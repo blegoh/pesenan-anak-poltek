@@ -30,3 +30,5 @@ Route::resource('/admin/page','Admin\PageController');
 
 Route::get('app','AppController@index');
 Route::get('res','AppController@result');
+
+Route::get('/page/{slug}','PageController@show');
