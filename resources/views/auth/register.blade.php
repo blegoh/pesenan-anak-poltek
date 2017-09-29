@@ -1,76 +1,86 @@
-@extends('layouts.app')
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spacial - Sign up</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+    <link rel="shortcut icon" href="images/favicon.ico">
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+    <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="scss/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="dist/theme.min.css"/>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+    <!-- javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="dist/theme.min.js"></script>
+</head>
+<body class="signup-page">
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+<!--[if lt IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="wrapper">
+    <div class="header">
+        <a href="index.html" class="logo">
+            <img src="images/logo-alt-b.png"/>
+        </a>
     </div>
+    <form method="POST" action="{{ route('register') }}">
+        {{ csrf_field() }}
+        <div class="form-field">
+            <input type="text" placeholder="Your name" name="name" value="{{ old('name') }}">
+            @if ($errors->has('name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-field">
+            <input type="email" placeholder="Email" name="email" value="{{ old('email') }}">
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Password" name="password">
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-field">
+            <input type="password" placeholder="Confirm Password" name="password_confirmation">
+        </div>
+        <div class="form-field">
+            <label class="terms">
+                <input type="checkbox" name="terms">
+                I've read & agree with the <a href="#">Terms</a>.
+            </label>
+        </div>
+        <div class="form-action">
+            <input type="submit" class="btn-shadow btn-shadow-primary" value="Sign Up">
+        </div>
+        <div class="form-bottom">
+            Already have an account?
+            <a href="/login">Sign in</a>
+        </div>
+    </form>
 </div>
-@endsection
+
+</body>
+</html>
