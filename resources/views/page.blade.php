@@ -1,16 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{$page->title}}</div>
+    <div class="blog-post">
+        <div class="container">
+            <h3 class="blog-post-title">
+                {{$page->title}}
+            </h3>
 
-                    <div class="panel-body">
-                        {{$page->content}}
-                    </div>
-                </div>
+            <div class="blog-post-content">
+                {!! $page->content !!}
             </div>
         </div>
     </div>
