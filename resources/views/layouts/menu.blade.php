@@ -1,5 +1,5 @@
 <ul class="navbar-nav">
-    @if(!(Auth::user()->is_admin == 1))
+    @if(!(Auth::check() && Auth::user()->is_admin == 1))
         <li class="nav-item active dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 Jember
