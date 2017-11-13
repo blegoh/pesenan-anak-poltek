@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QuestionSeed::class);
         $this->call(PageSeeder::class);
         $this->call(AdminSeed::class);
+        $this->call(KecamatanSeed::class);
     }
 }
