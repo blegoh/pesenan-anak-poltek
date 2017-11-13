@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kecamatan;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,7 @@ class AppController extends Controller
 
     public function result(Request $request)
     {
-        return view('app.result');
+        $kecamatans = Kecamatan::all();
+        return view('app.result',compact('kecamatans'));
     }
 }
