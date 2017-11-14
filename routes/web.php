@@ -32,6 +32,9 @@ Route::prefix('admin')->group(function () {
 
 });
 
+Route::get('/record/data','RecordController@anyData')
+    ->name('record.data');
+Route::resource('/record','RecordController');
 
 Route::get('app','AppController@index');
 Route::get('res','AppController@result');
