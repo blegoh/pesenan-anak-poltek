@@ -28,6 +28,8 @@ class ModifyUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_kecamatan_id_foreign');
+        });
     }
 }
