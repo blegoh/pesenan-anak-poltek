@@ -15,11 +15,21 @@ class RecordController extends Controller
     private $view = 'admin.records';
     private $route = 'record';
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, Record::$rulesCreate);
         auth()->user()->update($request->all());
-        auth()->user()->records()->create($request->all());
+        if(auth()->user()->records()->count() > 0){
+            auth()->user()->records()->delete();
+            auth()->user()->records()->create($request->all());
+        }else{
+            auth()->user()->records()->create($request->all());
+        }
         return redirect('/');
     }
 

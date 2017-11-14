@@ -13,4 +13,10 @@ class PageController extends Controller
     private $model = Page::class;
     private $view = 'admin.pages';
     private $route = 'page';
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 }
