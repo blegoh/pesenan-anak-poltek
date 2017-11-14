@@ -30,7 +30,7 @@ class User extends Authenticatable
     ];
 
     public function records(){
-        return $this->hasMany(Record::class);
+        return $this->hasOne(Record::class);
     }
 
     public function kecamatan()
