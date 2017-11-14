@@ -31,6 +31,9 @@
         <li class="nav-item dropdown dropdown-extend">
             <a class="nav-link" href="/admin/page">Halaman</a>
         </li>
+        <li class="nav-item dropdown dropdown-extend">
+            <a class="nav-link" href="/record">Record</a>
+        </li>
     @endif
     @if(Auth::check())
         @if(Auth::user()->is_admin == 0)

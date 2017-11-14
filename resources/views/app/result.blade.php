@@ -6,17 +6,20 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
-                    <h4 class="m-t-0 header-title"><b>{{(Request::get('val') == 1)?"Positif":"Negatif"}}</b></h4>
+                    <h4 class="m-t-0 header-title"><b>Beresiko {{(Request::get('val') == 1)?"Tinggi ":"Rendah "}}Kanker Servik</b></h4>
                 </div><!-- end col -->
 
             </div><!-- end row -->
 
-            <br /><br /><br />
+            <br /><br />
 
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
-                    <form class="form-horizontal">
+                    <h3>Isi data diri untuk pendataan</h3>
+                    <form class="form-horizontal" method="post" action="{{route('record.store')}}">
+                        {{csrf_field()}}
+                        <input type="hidden" name="risk" value="{{Request::get('val')}}">
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="email">Kecamatan:</label>
                             <div class="col-sm-10">
