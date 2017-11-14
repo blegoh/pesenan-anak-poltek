@@ -16,11 +16,9 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('kecamatan_id');
-            $table->string('alamat');
+            $table->boolean('risk');
             $table->timestamps();
 
-            $table->foreign('kecamatan_id')->references('id')->on('kecamatans')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
